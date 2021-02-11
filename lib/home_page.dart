@@ -1,35 +1,32 @@
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 
 class HomePage extends StatelessWidget {
+  InAppWebViewController _webViewController;
   @override
   Widget build(BuildContext context) {
-    const String url = 'https://www.google.com/';
-    return Scaffold(
+    return MaterialApp(
+        home: Scaffold(
       appBar: AppBar(
-        title: Text("RV-Cabs"),
+        title: const Text('RV-Cabs'),
       ),
-      body:Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          const Padding(
-            padding: EdgeInsets.all(16.0),
-            child: Text("Launch"),
-          ),
-          RaisedButton(
-            onPressed: () async=> {
-                if (await canLaunch(url)) {
-                await launch(url, forceSafariVC: false)
-                } else {
-                throw 'Could not launch $url'
-                }
+      body: Container(
+          child: Column(children: <Widget>[
+        Expanded(
+          child: InAppWebView(
+            initialUrl: 'http://103.224.240.187:8090/rvcabsv2/#',
+            initialOptions: InAppWebViewGroupOptions(
+                crossPlatform: InAppWebViewOptions(
+              debuggingEnabled: true,
+            )),
+            onWebViewCreated: (InAppWebViewController controller) {
+              _webViewController = controller;
             },
-            child: const Text('Book a Ride'),
-            )
-          ],
-        )
-      ),
-    );
+            onLoadStart: (InAppWebViewController controller, String url) {},
+            onLoadStop: (InAppWebViewController controller, String url) {},
+          ),
+        ),
+      ])),
+    ));
   }
 }

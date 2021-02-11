@@ -25,7 +25,11 @@ dependencies:
     sdk: flutter
 
   #  this is url lanucher dependancy
-  url_launcher: ^5.2.5
+#  url_launcher: ^5.2.5
+#  webview_flutter: ^1.0.7
+#  flutter_webview_plugin: ^0.3.11
+#  this plugin used for the showing webview in app
+  flutter_inappwebview: ^4.0.0+4
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.0

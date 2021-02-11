@@ -2,6 +2,7 @@ import 'package:rigved_flutter_app/home_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(WebSiteLaunch());
 }
 
